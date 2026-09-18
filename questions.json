@@ -1,0 +1,122 @@
+[
+  {
+    "text": "Menciona algo que la gente hace apenas despierta",
+    "answers": [
+      { "text": "Apagar la alarma", "points": 30 },
+      { "text": "Ver el celular", "points": 24 },
+      { "text": "Bañarse", "points": 16 },
+      { "text": "Desayunar", "points": 12 },
+      { "text": "Cepillarse los dientes", "points": 8 },
+      { "text": "Vestirse", "points": 6 },
+      { "text": "Hacer café", "points": 4 }
+    ]
+  },
+  {
+    "text": "Menciona algo que llevas a la playa",
+    "answers": [
+      { "text": "Toalla", "points": 30 },
+      { "text": "Bloqueador solar", "points": 24 },
+      { "text": "Traje de baño", "points": 18 },
+      { "text": "Sombrilla", "points": 10 },
+      { "text": "Sandalias", "points": 8 },
+      { "text": "Agua / bebidas", "points": 6 },
+      { "text": "Sombrero", "points": 4 }
+    ]
+  },
+  {
+    "text": "Menciona una comida típica de una fiesta",
+    "answers": [
+      { "text": "Pastel", "points": 30 },
+      { "text": "Pizza", "points": 22 },
+      { "text": "Tacos", "points": 18 },
+      { "text": "Refresco", "points": 12 },
+      { "text": "Palomitas", "points": 8 },
+      { "text": "Helado", "points": 6 },
+      { "text": "Gelatina", "points": 4 }
+    ]
+  },
+  {
+    "text": "Menciona un animal que le da miedo a la gente",
+    "answers": [
+      { "text": "Araña", "points": 30 },
+      { "text": "Serpiente", "points": 25 },
+      { "text": "Tiburón", "points": 17 },
+      { "text": "Cucaracha", "points": 11 },
+      { "text": "Perro", "points": 8 },
+      { "text": "León", "points": 6 },
+      { "text": "Rata", "points": 3 }
+    ]
+  },
+  {
+    "text": "Menciona algo que siempre se te pierde",
+    "answers": [
+      { "text": "Las llaves", "points": 32 },
+      { "text": "El control remoto", "points": 21 },
+      { "text": "El celular", "points": 18 },
+      { "text": "Los audífonos", "points": 11 },
+      { "text": "Los lentes", "points": 8 },
+      { "text": "La cartera", "points": 6 },
+      { "text": "Los calcetines", "points": 4 }
+    ]
+  },
+  {
+    "text": "Menciona algo que haces cuando no puedes dormir",
+    "answers": [
+      { "text": "Ver el celular", "points": 31 },
+      { "text": "Ver la tele", "points": 20 },
+      { "text": "Dar vueltas en la cama", "points": 15 },
+      { "text": "Comer algo", "points": 12 },
+      { "text": "Contar ovejas", "points": 9 },
+      { "text": "Escuchar música", "points": 7 },
+      { "text": "Leer", "points": 6 }
+    ]
+  },
+  {
+    "text": "Menciona un motivo por el que llegas tarde",
+    "answers": [
+      { "text": "El tráfico", "points": 34 },
+      { "text": "Me quedé dormido", "points": 25 },
+      { "text": "El transporte", "points": 14 },
+      { "text": "No encontraba las llaves", "points": 9 },
+      { "text": "La lluvia / el clima", "points": 7 },
+      { "text": "Se descompuso el carro", "points": 6 },
+      { "text": "Los hijos", "points": 5 }
+    ]
+  },
+  {
+    "text": "Menciona algo que hay en una mochila escolar",
+    "answers": [
+      { "text": "Cuadernos", "points": 30 },
+      { "text": "Plumas / lápices", "points": 23 },
+      { "text": "Libros", "points": 17 },
+      { "text": "Lonche", "points": 11 },
+      { "text": "Botella de agua", "points": 8 },
+      { "text": "Estuche", "points": 6 },
+      { "text": "Calculadora", "points": 5 }
+    ]
+  },
+  {
+    "text": "Menciona algo que la gente hace un domingo",
+    "answers": [
+      { "text": "Dormir hasta tarde", "points": 30 },
+      { "text": "Comer en familia", "points": 22 },
+      { "text": "Ver la tele / fútbol", "points": 17 },
+      { "text": "Salir de paseo", "points": 12 },
+      { "text": "Limpiar la casa", "points": 8 },
+      { "text": "Ir a la iglesia", "points": 6 },
+      { "text": "No hacer nada", "points": 5 }
+    ]
+  },
+  {
+    "text": "Menciona algo que haces en un elevador",
+    "answers": [
+      { "text": "Esperar en silencio", "points": 29 },
+      { "text": "Ver el celular", "points": 25 },
+      { "text": "Presionar botones", "points": 16 },
+      { "text": "Ver los números de pisos", "points": 11 },
+      { "text": "Verse en el espejo", "points": 8 },
+      { "text": "Platicar", "points": 6 },
+      { "text": "Silbar / tararear", "points": 5 }
+    ]
+  }
+]

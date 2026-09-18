@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>Control del Host — 100 Personas Dijeron</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="remote">
+
+  <!-- LOGIN CON PIN -->
+  <div id="auth" class="auth">
+    <h1>🎮 Control del Host</h1>
+    <p>Ingresa el PIN para controlar el juego</p>
+    <input id="pin" type="password" inputmode="numeric" autocomplete="off" placeholder="PIN">
+    <button id="authBtn" class="btn btn-primary">Entrar</button>
+    <p id="authError" class="error hidden">PIN incorrecto, intenta de nuevo</p>
+  </div>
+
+  <!-- PANEL DE CONTROL -->
+  <div id="panel" class="hidden">
+
+    <div class="hud">
+      <div><small>FASE</small><strong id="hudPhase">—</strong></div>
+      <div><small>BOTE</small><strong id="hudPot">0</strong></div>
+      <div><small>ERRORES</small><strong id="hudStrikes">0</strong></div>
+    </div>
+
+    <div class="scores">
+      <div class="score-chip"><span>EQUIPO A</span><strong id="scoreA">0</strong></div>
+      <div class="score-chip"><span>EQUIPO B</span><strong id="scoreB">0</strong></div>
+    </div>
+
+    <section class="card">
+      <label for="questionSelect">Pregunta</label>
+      <div class="row">
+        <select id="questionSelect"></select>
+        <button id="startBtn" class="btn btn-primary">Mostrar</button>
+      </div>
+      <p id="currentQuestion" class="current-q"></p>
+    </section>
+
+    <section id="answersCard" class="card hidden">
+      <label>Respuestas — toca para revelar en pantalla</label>
+      <div id="answers"></div>
+    </section>
+
+    <div class="grid-actions">
+      <button id="strikeBtn" class="btn btn-strike">✕ &nbsp;ERROR</button>
+      <button id="awardA" class="btn btn-team">Bote → Equipo A</button>
+      <button id="awardB" class="btn btn-team">Bote → Equipo B</button>
+      <button id="nextBtn" class="btn btn-primary">Siguiente ➜</button>
+      <button id="resetBtn" class="btn btn-danger">Reiniciar juego</button>
+    </div>
+
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/remote.js"></script>
+</body>
+</html>

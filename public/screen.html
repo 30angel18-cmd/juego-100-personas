@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>100 Personas Dijeron — Pantalla</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="screen">
+
+  <!-- LOBBY -->
+  <section id="lobby" class="phase">
+    <h1 class="game-title">100 PERSONAS<br>DIJERON</h1>
+    <p class="lobby-sub">El host controla el juego desde su celular</p>
+    <img id="qr" class="qr hidden" alt="QR para abrir el control remoto">
+    <p id="remoteUrl" class="url"></p>
+    <p class="hint">Toca la pantalla una vez para activar el sonido</p>
+  </section>
+
+  <!-- TABLERO DE JUEGO -->
+  <section id="game" class="phase hidden">
+    <div class="question-banner"><span id="questionText"></span></div>
+    <div id="board" class="board"></div>
+    <div id="strikes" class="strikes"></div>
+  </section>
+
+  <!-- OVERLAY FIN DE RONDA -->
+  <div id="awardOverlay" class="award-overlay hidden">
+    <div id="awardText" class="award-text"></div>
+  </div>
+
+  <!-- FINAL -->
+  <section id="final" class="phase hidden">
+    <h1 class="game-title">FIN DEL JUEGO</h1>
+    <div id="winnerText" class="winner"></div>
+  </section>
+
+  <!-- MARCADOR -->
+  <footer id="scorebar" class="scorebar hidden">
+    <div class="team team-a">
+      <span class="team-name">EQUIPO A</span>
+      <span id="scoreA" class="team-score">0</span>
+    </div>
+    <div class="pot-box">
+      <span class="pot-label">BOTE</span>
+      <span id="pot" class="pot-value">0</span>
+    </div>
+    <div class="team team-b">
+      <span class="team-name">EQUIPO B</span>
+      <span id="scoreB" class="team-score">0</span>
+    </div>
+  </footer>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/screen.js"></script>
+</body>
+</html>
