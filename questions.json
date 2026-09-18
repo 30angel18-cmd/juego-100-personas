@@ -1,122 +1,122 @@
 [
   {
-    "text": "Menciona algo que la gente hace apenas despierta",
+    "text": "¿Cuáles son las empresas pioneras de la globalización?",
     "answers": [
-      { "text": "Apagar la alarma", "points": 30 },
-      { "text": "Ver el celular", "points": 24 },
-      { "text": "Bañarse", "points": 16 },
-      { "text": "Desayunar", "points": 12 },
-      { "text": "Cepillarse los dientes", "points": 8 },
-      { "text": "Vestirse", "points": 6 },
-      { "text": "Hacer café", "points": 4 }
+      {
+        "text": "Coca-Cola",
+        "points": 30,
+        "info": "Fundada en 1886 en Atlanta (EE. UU.). Está presente en más de 200 países y es el símbolo por excelencia del consumo global."
+      },
+      {
+        "text": "McDonald's",
+        "points": 22,
+        "info": "Nació en 1940 en California. Llevó su modelo de comida rápida y franquicias a más de 100 países, adaptando su menú a cada cultura."
+      },
+      {
+        "text": "Ford",
+        "points": 15,
+        "info": "Fundada en 1903 por Henry Ford. Su producción en cadena revolucionó la industria y fue de las primeras en instalar fábricas fuera de EE. UU."
+      },
+      {
+        "text": "Toyota",
+        "points": 11,
+        "info": "Empresa japonesa fundada en 1937. Globalizó su sistema de producción 'justo a tiempo' y hoy fabrica vehículos en los 5 continentes."
+      },
+      {
+        "text": "Nestlé",
+        "points": 9,
+        "info": "Multinacional suiza fundada en 1866. Es la empresa de alimentos más grande del mundo, con marcas presentes en casi todos los países."
+      },
+      {
+        "text": "Sony",
+        "points": 7,
+        "info": "Empresa japonesa fundada en 1946. Llevó su tecnología y entretenimiento (electrónica, música, cine, videojuegos) a todo el mundo."
+      },
+      {
+        "text": "Apple",
+        "points": 6,
+        "info": "Fundada en 1976 en EE. UU. Diseña en California, fabrica en Asia y vende en todo el planeta: ejemplo de cadena de valor global."
+      }
     ]
   },
   {
-    "text": "Menciona algo que llevas a la playa",
+    "text": "¿Qué empresas colombianas se han beneficiado de la globalización?",
     "answers": [
-      { "text": "Toalla", "points": 30 },
-      { "text": "Bloqueador solar", "points": 24 },
-      { "text": "Traje de baño", "points": 18 },
-      { "text": "Sombrilla", "points": 10 },
-      { "text": "Sandalias", "points": 8 },
-      { "text": "Agua / bebidas", "points": 6 },
-      { "text": "Sombrero", "points": 4 }
+      {
+        "text": "Juan Valdez",
+        "points": 28,
+        "info": "La marca de los cafeteros colombianos lleva el café nacional a más de 30 países con tiendas propias y franquicias."
+      },
+      {
+        "text": "Grupo Nutresa",
+        "points": 20,
+        "info": "Multinacional de alimentos con sede en Medellín. Gracias a exportaciones y adquisiciones, vende en más de 70 países."
+      },
+      {
+        "text": "Bancolombia",
+        "points": 15,
+        "info": "Con la apertura financiera se expandió a Panamá, Guatemala y El Salvador, convirtiéndose en un banco regional."
+      },
+      {
+        "text": "Avianca",
+        "points": 12,
+        "info": "La aerolínea colombiana conecta al país con América y Europa. La apertura de cielos le permitió crecer internacionalmente."
+      },
+      {
+        "text": "Alpina",
+        "points": 10,
+        "info": "Exporta sus productos lácteos a EE. UU. y Ecuador, y tiene operaciones fuera del país gracias a los tratados comerciales."
+      },
+      {
+        "text": "Crepes & Waffles",
+        "points": 8,
+        "info": "El restaurante colombiano abrió sucursales en España, México, Chile, Panamá y otros países, llevando su marca al exterior."
+      },
+      {
+        "text": "Arturo Calle",
+        "points": 7,
+        "info": "La marca de moda masculina se internacionalizó con tiendas en Panamá, Costa Rica, Guatemala y El Salvador."
+      }
     ]
   },
   {
-    "text": "Menciona una comida típica de una fiesta",
+    "text": "¿Qué riesgos o desventajas trae la globalización?",
     "answers": [
-      { "text": "Pastel", "points": 30 },
-      { "text": "Pizza", "points": 22 },
-      { "text": "Tacos", "points": 18 },
-      { "text": "Refresco", "points": 12 },
-      { "text": "Palomitas", "points": 8 },
-      { "text": "Helado", "points": 6 },
-      { "text": "Gelatina", "points": 4 }
-    ]
-  },
-  {
-    "text": "Menciona un animal que le da miedo a la gente",
-    "answers": [
-      { "text": "Araña", "points": 30 },
-      { "text": "Serpiente", "points": 25 },
-      { "text": "Tiburón", "points": 17 },
-      { "text": "Cucaracha", "points": 11 },
-      { "text": "Perro", "points": 8 },
-      { "text": "León", "points": 6 },
-      { "text": "Rata", "points": 3 }
-    ]
-  },
-  {
-    "text": "Menciona algo que siempre se te pierde",
-    "answers": [
-      { "text": "Las llaves", "points": 32 },
-      { "text": "El control remoto", "points": 21 },
-      { "text": "El celular", "points": 18 },
-      { "text": "Los audífonos", "points": 11 },
-      { "text": "Los lentes", "points": 8 },
-      { "text": "La cartera", "points": 6 },
-      { "text": "Los calcetines", "points": 4 }
-    ]
-  },
-  {
-    "text": "Menciona algo que haces cuando no puedes dormir",
-    "answers": [
-      { "text": "Ver el celular", "points": 31 },
-      { "text": "Ver la tele", "points": 20 },
-      { "text": "Dar vueltas en la cama", "points": 15 },
-      { "text": "Comer algo", "points": 12 },
-      { "text": "Contar ovejas", "points": 9 },
-      { "text": "Escuchar música", "points": 7 },
-      { "text": "Leer", "points": 6 }
-    ]
-  },
-  {
-    "text": "Menciona un motivo por el que llegas tarde",
-    "answers": [
-      { "text": "El tráfico", "points": 34 },
-      { "text": "Me quedé dormido", "points": 25 },
-      { "text": "El transporte", "points": 14 },
-      { "text": "No encontraba las llaves", "points": 9 },
-      { "text": "La lluvia / el clima", "points": 7 },
-      { "text": "Se descompuso el carro", "points": 6 },
-      { "text": "Los hijos", "points": 5 }
-    ]
-  },
-  {
-    "text": "Menciona algo que hay en una mochila escolar",
-    "answers": [
-      { "text": "Cuadernos", "points": 30 },
-      { "text": "Plumas / lápices", "points": 23 },
-      { "text": "Libros", "points": 17 },
-      { "text": "Lonche", "points": 11 },
-      { "text": "Botella de agua", "points": 8 },
-      { "text": "Estuche", "points": 6 },
-      { "text": "Calculadora", "points": 5 }
-    ]
-  },
-  {
-    "text": "Menciona algo que la gente hace un domingo",
-    "answers": [
-      { "text": "Dormir hasta tarde", "points": 30 },
-      { "text": "Comer en familia", "points": 22 },
-      { "text": "Ver la tele / fútbol", "points": 17 },
-      { "text": "Salir de paseo", "points": 12 },
-      { "text": "Limpiar la casa", "points": 8 },
-      { "text": "Ir a la iglesia", "points": 6 },
-      { "text": "No hacer nada", "points": 5 }
-    ]
-  },
-  {
-    "text": "Menciona algo que haces en un elevador",
-    "answers": [
-      { "text": "Esperar en silencio", "points": 29 },
-      { "text": "Ver el celular", "points": 25 },
-      { "text": "Presionar botones", "points": 16 },
-      { "text": "Ver los números de pisos", "points": 11 },
-      { "text": "Verse en el espejo", "points": 8 },
-      { "text": "Platicar", "points": 6 },
-      { "text": "Silbar / tararear", "points": 5 }
+      {
+        "text": "Pérdida de empleos locales",
+        "points": 26,
+        "info": "Las empresas trasladan su producción a países con mano de obra más barata, dejando desempleo en sus países de origen."
+      },
+      {
+        "text": "Competencia desleal",
+        "points": 20,
+        "info": "Los productos importados a bajo costo pueden quebrar a los productores y empresas nacionales que no pueden competir."
+      },
+      {
+        "text": "Pérdida de identidad cultural",
+        "points": 16,
+        "info": "Las costumbres y productos locales se van reemplazando por modas y patrones de consumo globales."
+      },
+      {
+        "text": "Dependencia económica",
+        "points": 12,
+        "info": "Al estar los mercados conectados, una crisis en un país grande afecta a las economías de todo el mundo."
+      },
+      {
+        "text": "Explotación laboral",
+        "points": 10,
+        "info": "Parte de la producción global se hace en países con salarios muy bajos y pocas garantías para los trabajadores."
+      },
+      {
+        "text": "Daño ambiental",
+        "points": 9,
+        "info": "El aumento de la producción y del transporte internacional genera más contaminación y sobreexplotación de recursos."
+      },
+      {
+        "text": "Desigualdad",
+        "points": 7,
+        "info": "La riqueza tiende a concentrarse en las grandes multinacionales y en los países más desarrollados."
+      }
     ]
   }
 ]

@@ -9,6 +9,7 @@ const el = {
   remoteUrl: document.getElementById('remoteUrl'),
   questionText: document.getElementById('questionText'),
   board: document.getElementById('board'),
+  answerInfo: document.getElementById('answerInfo'),
   strikes: document.getElementById('strikes'),
   awardOverlay: document.getElementById('awardOverlay'),
   awardText: document.getElementById('awardText'),
@@ -19,6 +20,7 @@ const el = {
 };
 
 let currentQuestion = null;
+let prevFlags = [];
 const prev = { revealed: 0, strikes: 0, phase: 'lobby' };
 
 // ---------- Sonidos (WebAudio, sin archivos) ----------
@@ -78,6 +80,7 @@ function render(s) {
   } else {
     prev.revealed = 0;
   }
+  const justStruckOut = s.strikes === 3 && s.strikes > prev.strikes;
   if (s.strikes > prev.strikes) buzz();
   prev.strikes = s.strikes;
   if (s.phase === 'roundEnd' && prev.phase === 'round' && s.lastAward) fanfare();
@@ -102,16 +105,34 @@ function render(s) {
       currentQuestion = s.questionText;
       el.questionText.textContent = s.questionText;
       buildBoard(s.answers);
+      prevFlags = s.answers.map(() => false);
+      el.answerInfo.classList.add('hidden');
     }
+    let newlyRevealed = -1;
     s.answers.forEach((a, i) => {
       const slot = el.board.children[i];
       if (!slot) return;
+      if (a.revealed && !prevFlags[i]) newlyRevealed = i;
       slot.classList.toggle('revealed', a.revealed);
       if (a.revealed) {
         slot.querySelector('.answer-text').textContent = a.text;
         slot.querySelector('.answer-points').textContent = a.points;
       }
     });
+    prevFlags = s.answers.map(a => a.revealed);
+    // Información de la respuesta recién revelada
+    if (newlyRevealed >= 0) {
+      const info = s.answers[newlyRevealed].info;
+      if (info) {
+        el.answerInfo.textContent = info;
+        el.answerInfo.classList.remove('hidden');
+      } else {
+        el.answerInfo.classList.add('hidden');
+      }
+    }
+  } else {
+    prevFlags = [];
+    el.answerInfo.classList.add('hidden');
   }
 
   // Strikes
@@ -129,6 +150,17 @@ function render(s) {
   if (s.phase === 'roundEnd' && s.lastAward) {
     el.awardText.textContent =
       `¡EQUIPO ${s.lastAward.team} SE LLEVA ${s.lastAward.points} PUNTOS!`;
+  }
+
+  // 3 errores: aviso temporal en pantalla
+  if (justStruckOut && !s.lastAward) {
+    el.awardText.textContent = '✕ ✕ ✕';
+    el.awardOverlay.classList.remove('hidden');
+    setTimeout(() => {
+      if (el.awardText.textContent === '✕ ✕ ✕') {
+        el.awardOverlay.classList.add('hidden');
+      }
+    }, 2500);
   }
 
   // Final

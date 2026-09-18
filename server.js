@@ -75,6 +75,7 @@ function publicState() {
           revealed: game.revealed[i],
           text: game.revealed[i] ? a.text : null,
           points: game.revealed[i] ? a.points : null,
+          info: game.revealed[i] ? a.info || null : null,
         }))
       : null,
     pot: game.pot,
@@ -144,18 +145,21 @@ io.on('connection', (socket) => {
   });
 
   socket.on('answer:reveal', (index) => {
-    if (!isHost() || game.phase !== 'round') return;
+    if (!isHost() || (game.phase !== 'round' && game.phase !== 'roundEnd')) return;
     const q = currentQuestion();
     if (!q || index < 0 || index >= q.answers.length || game.revealed[index]) return;
     game.revealed[index] = true;
-    game.pot += q.answers[index].points;
-    if (game.revealed.every(Boolean)) game.phase = 'roundEnd';
+    if (game.phase === 'round') {
+      game.pot += q.answers[index].points;
+      if (game.revealed.every(Boolean)) game.phase = 'roundEnd';
+    }
     broadcast();
   });
 
   socket.on('strike:add', () => {
     if (!isHost() || game.phase !== 'round') return;
     if (game.strikes < 3) game.strikes += 1;
+    if (game.strikes === 3) game.phase = 'roundEnd'; // 3 errores: termina la ronda
     broadcast();
   });
 
