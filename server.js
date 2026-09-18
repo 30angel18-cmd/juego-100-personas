@@ -1,5 +1,6 @@
 const path = require('path');
 const fs = require('fs');
+const os = require('os');
 const http = require('http');
 const express = require('express');
 const { Server } = require('socket.io');
@@ -7,10 +8,23 @@ const QRCode = require('qrcode');
 
 const PORT = process.env.PORT || 3000;
 const HOST_PIN = process.env.HOST_PIN || '1234';
+
+// URL pública: variable de entorno > Render > IP de la red local > localhost
+function lanUrl() {
+  for (const list of Object.values(os.networkInterfaces())) {
+    for (const it of list || []) {
+      if (it.family === 'IPv4' && !it.internal) {
+        return `http://${it.address}:${PORT}`;
+      }
+    }
+  }
+  return `http://localhost:${PORT}`;
+}
+
 const PUBLIC_URL = (
   process.env.PUBLIC_URL ||
   process.env.RENDER_EXTERNAL_URL ||
-  `http://localhost:${PORT}`
+  lanUrl()
 ).replace(/\/+$/, '');
 
 const questions = JSON.parse(
@@ -187,6 +201,7 @@ io.on('connection', (socket) => {
 QRCode.toDataURL(`${PUBLIC_URL}/remote`, { width: 320, margin: 1 })
   .then((url) => {
     remoteQrDataUrl = url;
+    broadcast(); // por si algún cliente conectó antes de generarse el QR
   })
   .catch((err) => console.error('No se pudo generar el QR:', err.message));
 
