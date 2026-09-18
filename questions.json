@@ -1,41 +1,41 @@
 [
   {
-    "text": "¿Cuáles son las empresas pioneras de la globalización?",
+    "text": "¿Qué empresas fueron pioneras en globalizarse?",
     "answers": [
       {
         "text": "Coca-Cola",
         "points": 30,
-        "info": "Fundada en 1886 en Atlanta (EE. UU.). Está presente en más de 200 países y es el símbolo por excelencia del consumo global."
+        "info": "Fundada en 1886 en Atlanta (EE. UU.). Primer país al que se expandió: Canadá y Cuba en 1897."
       },
       {
         "text": "McDonald's",
         "points": 22,
-        "info": "Nació en 1940 en California. Llevó su modelo de comida rápida y franquicias a más de 100 países, adaptando su menú a cada cultura."
+        "info": "Fundada en 1940 en California (EE. UU.). Primer país al que se expandió: Canadá en 1967."
       },
       {
         "text": "Ford",
         "points": 15,
-        "info": "Fundada en 1903 por Henry Ford. Su producción en cadena revolucionó la industria y fue de las primeras en instalar fábricas fuera de EE. UU."
+        "info": "Fundada en 1903 en Detroit (EE. UU.). Primer país al que se expandió: Canadá en 1904, con Ford of Canada."
       },
       {
         "text": "Toyota",
         "points": 11,
-        "info": "Empresa japonesa fundada en 1937. Globalizó su sistema de producción 'justo a tiempo' y hoy fabrica vehículos en los 5 continentes."
+        "info": "Fundada en 1937 en Japón. Primer país al que exportó: Estados Unidos en 1957, con el modelo Crown."
       },
       {
         "text": "Nestlé",
         "points": 9,
-        "info": "Multinacional suiza fundada en 1866. Es la empresa de alimentos más grande del mundo, con marcas presentes en casi todos los países."
+        "info": "Fundada en 1866 en Suiza. Primeros países a los que se expandió: Reino Unido y Alemania a fines del siglo XIX."
       },
       {
         "text": "Sony",
         "points": 7,
-        "info": "Empresa japonesa fundada en 1946. Llevó su tecnología y entretenimiento (electrónica, música, cine, videojuegos) a todo el mundo."
+        "info": "Fundada en 1946 en Tokio (Japón). Primer país al que se expandió: Estados Unidos en 1960, con Sony Corporation of America."
       },
       {
         "text": "Apple",
         "points": 6,
-        "info": "Fundada en 1976 en EE. UU. Diseña en California, fabrica en Asia y vende en todo el planeta: ejemplo de cadena de valor global."
+        "info": "Fundada en 1976 en California (EE. UU.). Primer país al que se expandió: Irlanda en 1980, con su planta de Cork."
       }
     ]
   },
@@ -85,37 +85,37 @@
       {
         "text": "Pérdida de empleos locales",
         "points": 26,
-        "info": "Las empresas trasladan su producción a países con mano de obra más barata, dejando desempleo en sus países de origen."
+        "info": "Las empresas trasladan su producción a países con mano de obra más barata. Ejemplo: Nike es de Estados Unidos, pero fabrica su calzado en China y Vietnam."
       },
       {
         "text": "Competencia desleal",
         "points": 20,
-        "info": "Los productos importados a bajo costo pueden quebrar a los productores y empresas nacionales que no pueden competir."
+        "info": "Los productos importados a bajo costo pueden quebrar a las empresas nacionales. Ejemplo: la ropa y el calzado chinos de bajo precio han golpeado a los textileros y zapateros colombianos."
       },
       {
         "text": "Pérdida de identidad cultural",
         "points": 16,
-        "info": "Las costumbres y productos locales se van reemplazando por modas y patrones de consumo globales."
+        "info": "Las costumbres locales se reemplazan por modas globales. Ejemplo: se celebra Halloween o Black Friday y se consume comida rápida en lugar de las tradiciones y gastronomía propias."
       },
       {
         "text": "Dependencia económica",
         "points": 12,
-        "info": "Al estar los mercados conectados, una crisis en un país grande afecta a las economías de todo el mundo."
+        "info": "Al estar los mercados conectados, una crisis en un país grande afecta a todos. Ejemplo: la crisis financiera de Estados Unidos en 2008 provocó recesión en casi todo el mundo."
       },
       {
         "text": "Explotación laboral",
         "points": 10,
-        "info": "Parte de la producción global se hace en países con salarios muy bajos y pocas garantías para los trabajadores."
+        "info": "Parte de la producción global se hace con salarios muy bajos y pocas garantías. Ejemplo: las maquilas textiles de Bangladesh, donde se cosen prendas de grandes marcas con jornadas extenuantes."
       },
       {
         "text": "Daño ambiental",
         "points": 9,
-        "info": "El aumento de la producción y del transporte internacional genera más contaminación y sobreexplotación de recursos."
+        "info": "Más producción y transporte internacional generan más contaminación. Ejemplo: la deforestación del Amazonas para exportar madera, soya y carne al mundo."
       },
       {
         "text": "Desigualdad",
         "points": 7,
-        "info": "La riqueza tiende a concentrarse en las grandes multinacionales y en los países más desarrollados."
+        "info": "La riqueza se concentra en las grandes multinacionales y países desarrollados. Ejemplo: Apple vale más que el PIB de países enteros como Colombia o Chile."
       }
     ]
   }

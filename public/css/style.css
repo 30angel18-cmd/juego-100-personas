@@ -89,7 +89,7 @@ body.screen {
 
 /* ---- Pregunta ---- */
 .question-banner {
-  width: min(1000px, 86vw);
+  width: min(1000px, 100%);
   background: linear-gradient(180deg, var(--blue-600), var(--blue-700));
   border: 3px solid var(--gold);
   border-radius: 18px;
@@ -106,7 +106,7 @@ body.screen {
 /* ---- Tablero de 7 respuestas ---- */
 .board {
   margin-top: 3vh;
-  width: min(1000px, 86vw);
+  width: min(1000px, 100%);
   display: flex;
   flex-direction: column;
   gap: 1.4vh;
@@ -183,18 +183,76 @@ body.screen {
   flex-shrink: 0;
 }
 
-/* ---- Recuadro informativo ---- */
+/* ---- Distribución del tablero (se divide en dos con la info) ---- */
+.game-layout {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5vw;
+  width: min(1500px, 94vw);
+}
+
+.game-main {
+  flex: 1;
+  min-width: 0;
+  max-width: 1000px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ---- Panel informativo (mitad izquierda) ---- */
 .answer-info {
-  margin-top: 2vh;
-  width: min(1000px, 86vw);
-  background: rgba(16, 28, 78, .85);
-  border: 2px solid var(--gold);
-  border-radius: 14px;
-  padding: 1.5vh 2.5vw;
+  flex: 0 0 clamp(260px, 32vw, 480px);
+  background: linear-gradient(180deg, var(--blue-700), var(--blue-900));
+  border: 3px solid var(--gold);
+  border-radius: 18px;
+  padding: 30px 24px 24px;
+  box-shadow: 0 14px 40px rgba(0,0,0,.65), 0 0 25px rgba(255,210,77,.25);
+  position: relative;
+  animation: infoSlideIn .5s cubic-bezier(.2,1.3,.4,1);
+}
+
+.answer-info::before {
+  content: "ℹ";
+  position: absolute;
+  top: -18px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #ffe9a3, var(--gold) 60%, var(--gold-dark));
+  color: var(--blue-900);
+  font-weight: 900;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,.5);
+}
+
+.answer-info h3 {
+  color: var(--gold);
+  font-size: clamp(1rem, 1.6vw, 1.35rem);
+  text-transform: uppercase;
+  letter-spacing: .05em;
   text-align: center;
-  font-size: clamp(.85rem, 1.9vw, 1.35rem);
-  line-height: 1.45;
-  animation: popIn .3s ease;
+  padding: 6px 0 10px;
+  margin-bottom: 10px;
+  border-bottom: 2px solid rgba(255, 210, 77, .4);
+}
+
+.answer-info p {
+  font-size: clamp(.85rem, 1.3vw, 1.1rem);
+  line-height: 1.5;
+  text-align: center;
+  opacity: .95;
+}
+
+@keyframes infoSlideIn {
+  from { transform: translateX(-45%); opacity: 0; }
+  to   { transform: translateX(0); opacity: 1; }
 }
 
 /* ---- Strikes (X) ---- */
@@ -253,6 +311,19 @@ body.screen {
   font-size: clamp(1.6rem, 4.5vw, 4rem);
   font-weight: 800;
   text-align: center;
+  color: var(--gold);
+  text-shadow: 0 4px 0 var(--gold-dark), 0 10px 30px rgba(0,0,0,.7);
+  animation: winnerIn .7s cubic-bezier(.2,1.5,.4,1), winnerPulse 1.6s ease-in-out .8s infinite;
+}
+
+@keyframes winnerIn {
+  from { transform: scale(.3); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
+}
+
+@keyframes winnerPulse {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.06); }
 }
 
 /* ---- Marcador inferior ---- */

@@ -10,6 +10,8 @@ const el = {
   questionText: document.getElementById('questionText'),
   board: document.getElementById('board'),
   answerInfo: document.getElementById('answerInfo'),
+  answerInfoTitle: document.getElementById('answerInfoTitle'),
+  answerInfoText: document.getElementById('answerInfoText'),
   strikes: document.getElementById('strikes'),
   awardOverlay: document.getElementById('awardOverlay'),
   awardText: document.getElementById('awardText'),
@@ -53,6 +55,39 @@ const ding = () => { tone(987, 0.3); tone(1318, 0.45, 'sine', 0.08); };
 const buzz = () => { tone(140, 0.6, 'sawtooth', 0, 0.3); tone(110, 0.6, 'sawtooth', 0.02, 0.2); };
 const fanfare = () => { tone(523, 0.2); tone(659, 0.2, 'sine', 0.15); tone(784, 0.2, 'sine', 0.3); tone(1046, 0.5, 'sine', 0.45); };
 
+// Aplausos sintetizados (ruido filtrado con ráfagas)
+function applause(duration = 4) {
+  if (!audioCtx) return;
+  const size = audioCtx.sampleRate * duration;
+  const buffer = audioCtx.createBuffer(1, size, audioCtx.sampleRate);
+  const data = buffer.getChannelData(0);
+  for (let i = 0; i < size; i++) data[i] = Math.random() * 2 - 1;
+  const src = audioCtx.createBufferSource();
+  src.buffer = buffer;
+  const filter = audioCtx.createBiquadFilter();
+  filter.type = 'bandpass';
+  filter.frequency.value = 1400;
+  filter.Q.value = 0.6;
+  const gain = audioCtx.createGain();
+  const t = audioCtx.currentTime;
+  gain.gain.setValueAtTime(0, t);
+  gain.gain.linearRampToValueAtTime(0.4, t + 0.2);
+  for (let i = 1; i <= duration * 8; i++) {
+    gain.gain.linearRampToValueAtTime(0.18 + Math.random() * 0.25, t + 0.2 + i * 0.125);
+  }
+  gain.gain.exponentialRampToValueAtTime(0.001, t + duration);
+  src.connect(filter).connect(gain).connect(audioCtx.destination);
+  src.start(t);
+  src.stop(t + duration + 0.1);
+}
+
+// Celebración final: aplausos + fanfarria de victoria
+function celebration() {
+  applause(5);
+  [523, 659, 784, 1046, 784, 1046].forEach((f, i) => tone(f, 0.35, 'triangle', 0.2 + i * 0.18, 0.3));
+  tone(1318, 1, 'triangle', 0.2 + 6 * 0.18, 0.35);
+}
+
 // ---------- Render ----------
 function buildBoard(answers) {
   el.board.innerHTML = '';
@@ -84,6 +119,7 @@ function render(s) {
   if (s.strikes > prev.strikes) buzz();
   prev.strikes = s.strikes;
   if (s.phase === 'roundEnd' && prev.phase === 'round' && s.lastAward) fanfare();
+  if (s.phase === 'final' && prev.phase !== 'final') celebration();
   prev.phase = s.phase;
 
   // Fases visibles
@@ -120,11 +156,14 @@ function render(s) {
       }
     });
     prevFlags = s.answers.map(a => a.revealed);
-    // Información de la respuesta recién revelada
+    // Información de la respuesta recién revelada (pestaña emergente)
     if (newlyRevealed >= 0) {
-      const info = s.answers[newlyRevealed].info;
-      if (info) {
-        el.answerInfo.textContent = info;
+      const a = s.answers[newlyRevealed];
+      if (a.info) {
+        el.answerInfoTitle.textContent = a.text;
+        el.answerInfoText.textContent = a.info;
+        el.answerInfo.classList.add('hidden');
+        void el.answerInfo.offsetWidth; // reinicia la animación
         el.answerInfo.classList.remove('hidden');
       } else {
         el.answerInfo.classList.add('hidden');
