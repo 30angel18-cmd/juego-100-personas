@@ -17,6 +17,8 @@ const el = {
   answersCard: document.getElementById('answersCard'),
   answers: document.getElementById('answers'),
   strikeBtn: document.getElementById('strikeBtn'),
+  stealGood: document.getElementById('stealGood'),
+  stealBad: document.getElementById('stealBad'),
   awardA: document.getElementById('awardA'),
   awardB: document.getElementById('awardB'),
   nextBtn: document.getElementById('nextBtn'),
@@ -26,6 +28,7 @@ const el = {
 const PHASES = {
   lobby: 'Lobby',
   round: 'Ronda en juego',
+  steal: '¡Robo de puntos!',
   roundEnd: 'Fin de ronda',
   final: 'Fin del juego',
 };
@@ -51,6 +54,8 @@ el.startBtn.addEventListener('click', () => {
   socket.emit('question:select', Number(el.questionSelect.value));
 });
 el.strikeBtn.addEventListener('click', () => socket.emit('strike:add'));
+el.stealGood.addEventListener('click', () => socket.emit('steal:good'));
+el.stealBad.addEventListener('click', () => socket.emit('steal:bad'));
 el.awardA.addEventListener('click', () => socket.emit('round:award', 'A'));
 el.awardB.addEventListener('click', () => socket.emit('round:award', 'B'));
 el.nextBtn.addEventListener('click', () => socket.emit('question:next'));
@@ -102,7 +107,7 @@ socket.on('hostState', (s) => {
       const btn = el.answers.children[i];
       if (btn) {
         btn.classList.toggle('revealed', a.revealed);
-        btn.disabled = a.revealed || s.phase !== 'round';
+        btn.disabled = a.revealed || (s.phase !== 'round' && s.phase !== 'steal');
       }
     });
   } else {
@@ -118,6 +123,7 @@ socket.on('hostState', (s) => {
   // Deshabilitar acciones según la fase
   const inRound = s.phase === 'round';
   el.strikeBtn.disabled = !inRound;
+  el.stealGood.disabled = el.stealBad.disabled = s.phase !== 'steal';
   el.awardA.disabled = el.awardB.disabled = !inRound && s.phase !== 'roundEnd';
   el.nextBtn.disabled = s.phase === 'lobby' || s.phase === 'final';
 });

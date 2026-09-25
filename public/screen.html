@@ -27,14 +27,23 @@
       <div class="game-main">
         <div class="question-banner"><span id="questionText"></span></div>
         <div id="board" class="board"></div>
-        <div id="strikes" class="strikes"></div>
       </div>
     </div>
+    <aside id="strikesBox" class="strikes-box">
+      <span class="strikes-label">ERRORES</span>
+      <div id="strikes" class="strikes"></div>
+    </aside>
   </section>
 
   <!-- OVERLAY FIN DE RONDA -->
   <div id="awardOverlay" class="award-overlay hidden">
     <div id="awardText" class="award-text"></div>
+  </div>
+
+  <!-- X GRANDE CENTRADA AL MARCAR UN ERROR -->
+  <div id="strikeFlash" class="strike-flash hidden">
+    <div id="strikeFlashX" class="strike-flash-x"></div>
+    <div id="strikeFlashSub" class="strike-flash-sub"></div>
   </div>
 
   <!-- FINAL -->

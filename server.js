@@ -48,7 +48,7 @@ app.get('/remote', (_req, res) =>
 // ---------- Estado del juego (una sola partida a la vez) ----------
 
 const game = {
-  phase: 'lobby', // lobby | round | roundEnd | final
+  phase: 'lobby', // lobby | round | steal | roundEnd | final
   questionIndex: -1,
   revealed: [],
   pot: 0,
@@ -145,7 +145,7 @@ io.on('connection', (socket) => {
   });
 
   socket.on('answer:reveal', (index) => {
-    if (!isHost() || (game.phase !== 'round' && game.phase !== 'roundEnd')) return;
+    if (!isHost() || (game.phase !== 'round' && game.phase !== 'roundEnd' && game.phase !== 'steal')) return;
     const q = currentQuestion();
     if (!q || index < 0 || index >= q.answers.length || game.revealed[index]) return;
     game.revealed[index] = true;
@@ -159,7 +159,22 @@ io.on('connection', (socket) => {
   socket.on('strike:add', () => {
     if (!isHost() || game.phase !== 'round') return;
     if (game.strikes < 3) game.strikes += 1;
-    if (game.strikes === 3) game.phase = 'roundEnd'; // 3 errores: termina la ronda
+    if (game.strikes === 3) game.phase = 'steal'; // 3 errores: turno de robo
+    broadcast();
+  });
+
+  // El otro equipo intenta robar el bote con una respuesta (decisión manual del host)
+  socket.on('steal:good', () => {
+    if (!isHost() || game.phase !== 'steal') return;
+    game.phase = 'roundEnd';
+    io.emit('fx', 'stealGood');
+    broadcast();
+  });
+
+  socket.on('steal:bad', () => {
+    if (!isHost() || game.phase !== 'steal') return;
+    game.phase = 'roundEnd';
+    io.emit('fx', 'stealBad');
     broadcast();
   });
 

@@ -13,6 +13,9 @@ const el = {
   answerInfoTitle: document.getElementById('answerInfoTitle'),
   answerInfoText: document.getElementById('answerInfoText'),
   strikes: document.getElementById('strikes'),
+  strikeFlash: document.getElementById('strikeFlash'),
+  strikeFlashX: document.getElementById('strikeFlashX'),
+  strikeFlashSub: document.getElementById('strikeFlashSub'),
   awardOverlay: document.getElementById('awardOverlay'),
   awardText: document.getElementById('awardText'),
   winnerText: document.getElementById('winnerText'),
@@ -88,6 +91,20 @@ function celebration() {
   tone(1318, 1, 'triangle', 0.2 + 6 * 0.18, 0.35);
 }
 
+// ---------- X grande centrada al marcar un error ----------
+let flashTimer = null;
+function flashStrikes(n) {
+  el.strikeFlashX.textContent = '✕'.repeat(n);
+  el.strikeFlashSub.textContent = n === 3 ? '¡OPORTUNIDAD DE ROBO!' : '';
+  const dur = n === 3 ? 2400 : 1150;
+  el.strikeFlash.style.animationDuration = `${dur}ms`;
+  el.strikeFlash.classList.add('hidden');
+  void el.strikeFlash.offsetWidth; // reinicia la animación
+  el.strikeFlash.classList.remove('hidden');
+  clearTimeout(flashTimer);
+  flashTimer = setTimeout(() => el.strikeFlash.classList.add('hidden'), dur);
+}
+
 // ---------- Render ----------
 function buildBoard(answers) {
   el.board.innerHTML = '';
@@ -110,13 +127,12 @@ function render(s) {
   // Sonidos según cambios de estado
   if (s.answers) {
     const nowRevealed = s.answers.filter(a => a.revealed).length;
-    if (nowRevealed > prev.revealed && s.phase === 'round') ding();
+    if (nowRevealed > prev.revealed && (s.phase === 'round' || s.phase === 'steal')) ding();
     prev.revealed = nowRevealed;
   } else {
     prev.revealed = 0;
   }
-  const justStruckOut = s.strikes === 3 && s.strikes > prev.strikes;
-  if (s.strikes > prev.strikes) buzz();
+  if (s.strikes > prev.strikes) { buzz(); flashStrikes(s.strikes); }
   prev.strikes = s.strikes;
   if (s.phase === 'roundEnd' && prev.phase === 'round' && s.lastAward) fanfare();
   if (s.phase === 'final' && prev.phase !== 'final') celebration();
@@ -124,7 +140,7 @@ function render(s) {
 
   // Fases visibles
   el.lobby.classList.toggle('hidden', s.phase !== 'lobby');
-  el.game.classList.toggle('hidden', s.phase !== 'round' && s.phase !== 'roundEnd');
+  el.game.classList.toggle('hidden', s.phase !== 'round' && s.phase !== 'steal' && s.phase !== 'roundEnd');
   el.final.classList.toggle('hidden', s.phase !== 'final');
   el.scorebar.classList.toggle('hidden', s.phase === 'lobby');
   el.awardOverlay.classList.toggle('hidden', s.phase !== 'roundEnd' || !s.lastAward);
@@ -174,10 +190,9 @@ function render(s) {
     el.answerInfo.classList.add('hidden');
   }
 
-  // Strikes
-  el.strikes.innerHTML = '✕'.repeat(s.strikes)
-    .split('')
-    .map(x => `<span class="strike">${x}</span>`)
+  // Errores (recuadro de la esquina: siempre 3 casillas)
+  el.strikes.innerHTML = [0, 1, 2]
+    .map(i => `<span class="strike${i < s.strikes ? '' : ' empty'}">✕</span>`)
     .join('');
 
   // Marcador
@@ -191,17 +206,6 @@ function render(s) {
       `¡EQUIPO ${s.lastAward.team} SE LLEVA ${s.lastAward.points} PUNTOS!`;
   }
 
-  // 3 errores: aviso temporal en pantalla
-  if (justStruckOut && !s.lastAward) {
-    el.awardText.textContent = '✕ ✕ ✕';
-    el.awardOverlay.classList.remove('hidden');
-    setTimeout(() => {
-      if (el.awardText.textContent === '✕ ✕ ✕') {
-        el.awardOverlay.classList.add('hidden');
-      }
-    }, 2500);
-  }
-
   // Final
   if (s.phase === 'final') {
     const { A, B } = s.teams;
@@ -211,3 +215,9 @@ function render(s) {
 }
 
 socket.on('state', render);
+
+// Efectos puntuales enviados por el servidor (resultado del intento de robo)
+socket.on('fx', (name) => {
+  if (name === 'stealGood') applause(2); // aplausos cortos
+  if (name === 'stealBad') buzz();
+});

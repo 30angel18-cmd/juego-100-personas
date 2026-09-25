@@ -255,28 +255,94 @@ body.screen {
   to   { transform: translateX(0); opacity: 1; }
 }
 
-/* ---- Strikes (X) ---- */
+/* ---- Recuadro de errores (esquina superior derecha) ---- */
+.strikes-box {
+  position: fixed;
+  top: 2vh;
+  right: 2vw;
+  z-index: 15;
+  background: linear-gradient(180deg, var(--blue-700), var(--blue-900));
+  border: 3px solid var(--red);
+  border-radius: 14px;
+  padding: 1vh 1.4vw 1.2vh;
+  text-align: center;
+  box-shadow: 0 10px 26px rgba(0,0,0,.55);
+}
+
+.strikes-label {
+  font-size: clamp(.65rem, 1.3vw, .95rem);
+  font-weight: 800;
+  letter-spacing: .18em;
+  opacity: .85;
+}
+
 .strikes {
-  margin-top: 1.5vh;
-  height: clamp(44px, 8vh, 90px);
+  margin-top: .6vh;
   display: flex;
-  gap: 3vw;
-  align-items: center;
+  gap: .8vw;
   justify-content: center;
 }
 
 .strike {
   font-family: "Arial Black", sans-serif;
-  font-size: clamp(2.6rem, 9vh, 6rem);
+  font-size: clamp(1.7rem, 5vh, 3.2rem);
   font-weight: 900;
+  line-height: 1;
   color: var(--red);
-  text-shadow: 0 0 18px rgba(229,72,77,.8), 0 4px 0 var(--red-dark);
+  text-shadow: 0 0 14px rgba(229,72,77,.8), 0 3px 0 var(--red-dark);
   animation: strikeIn .35s cubic-bezier(.2,1.6,.4,1);
+}
+
+.strike.empty {
+  color: rgba(229,72,77,.16);
+  text-shadow: none;
+  animation: none;
 }
 
 @keyframes strikeIn {
   from { transform: scale(0) rotate(-30deg); }
   to   { transform: scale(1) rotate(0); }
+}
+
+/* ---- X grande centrada al marcar un error ---- */
+.strike-flash {
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2vh;
+  pointer-events: none;
+  animation: strikeFlashAnim 1.15s ease-out forwards;
+}
+
+.strike-flash-x {
+  font-family: "Arial Black", sans-serif;
+  font-size: clamp(7rem, 30vh, 20rem);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: .05em;
+  color: var(--red);
+  text-shadow: 0 0 45px rgba(229,72,77,.9), 0 8px 0 var(--red-dark);
+}
+
+.strike-flash-sub {
+  font-family: "Arial Black", sans-serif;
+  font-size: clamp(1.4rem, 4vw, 3.2rem);
+  text-align: center;
+  padding: 0 4vw;
+  color: var(--gold);
+  text-shadow: 0 4px 0 var(--gold-dark), 0 8px 22px rgba(0,0,0,.7);
+}
+
+@keyframes strikeFlashAnim {
+  0%   { transform: scale(.35); opacity: 0; }
+  16%  { transform: scale(1.06); opacity: 1; }
+  26%  { transform: scale(1); }
+  78%  { opacity: 1; }
+  100% { transform: scale(1); opacity: 0; }
 }
 
 /* ---- Overlay de fin de ronda ---- */
@@ -419,10 +485,15 @@ body.remote {
 
 .btn:active { transform: scale(.97); filter: brightness(1.15); }
 
-.btn-primary { background: linear-gradient(180deg, var(--blue-600), var(--blue-700)); border: 2px solid var(--blue-600); }
-.btn-strike  { background: linear-gradient(180deg, var(--red), var(--red-dark)); font-size: 1.3rem; }
-.btn-team    { background: linear-gradient(180deg, #2a9d62, #1d7a49); }
-.btn-danger  { background: transparent; border: 2px solid var(--red); color: var(--red); }
+.btn:disabled { opacity: .35; cursor: default; }
+.btn:disabled:active { transform: none; filter: none; }
+
+.btn-primary    { background: linear-gradient(180deg, var(--blue-600), var(--blue-700)); border: 2px solid var(--blue-600); }
+.btn-strike     { background: linear-gradient(180deg, var(--red), var(--red-dark)); font-size: 1.3rem; }
+.btn-steal-good { background: linear-gradient(180deg, #2fbf71, #1d8a4e); border: 2px solid var(--gold); }
+.btn-steal-bad  { background: linear-gradient(180deg, #7a2027, #521418); border: 2px solid var(--red); }
+.btn-team       { background: linear-gradient(180deg, #2a9d62, #1d7a49); }
+.btn-danger     { background: transparent; border: 2px solid var(--red); color: var(--red); }
 
 .hud {
   display: flex;
