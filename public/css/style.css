@@ -201,9 +201,18 @@ body.screen {
   align-items: center;
 }
 
+/* ---- Columna izquierda: errores arriba + panel informativo debajo ---- */
+.game-side {
+  flex: 0 0 clamp(260px, 32vw, 480px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3vh;
+}
+
 /* ---- Panel informativo (mitad izquierda) ---- */
 .answer-info {
-  flex: 0 0 clamp(260px, 32vw, 480px);
+  width: 100%;
   background: linear-gradient(180deg, var(--blue-700), var(--blue-900));
   border: 3px solid var(--gold);
   border-radius: 18px;
@@ -255,16 +264,12 @@ body.screen {
   to   { transform: translateX(0); opacity: 1; }
 }
 
-/* ---- Recuadro de errores (esquina superior derecha) ---- */
+/* ---- Recuadro de errores (columna izquierda, arriba de la info) ---- */
 .strikes-box {
-  position: fixed;
-  top: 2vh;
-  right: 2vw;
-  z-index: 15;
   background: linear-gradient(180deg, var(--blue-700), var(--blue-900));
   border: 3px solid var(--red);
   border-radius: 14px;
-  padding: 1vh 1.4vw 1.2vh;
+  padding: 1vh 2.4vw 1.2vh;
   text-align: center;
   box-shadow: 0 10px 26px rgba(0,0,0,.55);
 }

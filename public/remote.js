@@ -107,7 +107,7 @@ socket.on('hostState', (s) => {
       const btn = el.answers.children[i];
       if (btn) {
         btn.classList.toggle('revealed', a.revealed);
-        btn.disabled = a.revealed || (s.phase !== 'round' && s.phase !== 'steal');
+        btn.disabled = a.revealed || !['round', 'steal', 'roundEnd'].includes(s.phase);
       }
     });
   } else {

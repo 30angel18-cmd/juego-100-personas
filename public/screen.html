@@ -20,19 +20,21 @@
   <!-- TABLERO DE JUEGO -->
   <section id="game" class="phase hidden">
     <div class="game-layout">
-      <aside id="answerInfo" class="answer-info hidden">
-        <h3 id="answerInfoTitle"></h3>
-        <p id="answerInfoText"></p>
-      </aside>
+      <div class="game-side">
+        <aside id="strikesBox" class="strikes-box">
+          <span class="strikes-label">ERRORES</span>
+          <div id="strikes" class="strikes"></div>
+        </aside>
+        <aside id="answerInfo" class="answer-info hidden">
+          <h3 id="answerInfoTitle"></h3>
+          <p id="answerInfoText"></p>
+        </aside>
+      </div>
       <div class="game-main">
         <div class="question-banner"><span id="questionText"></span></div>
         <div id="board" class="board"></div>
       </div>
     </div>
-    <aside id="strikesBox" class="strikes-box">
-      <span class="strikes-label">ERRORES</span>
-      <div id="strikes" class="strikes"></div>
-    </aside>
   </section>
 
   <!-- OVERLAY FIN DE RONDA -->

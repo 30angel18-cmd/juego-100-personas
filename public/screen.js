@@ -27,6 +27,8 @@ const el = {
 let currentQuestion = null;
 let prevFlags = [];
 const prev = { revealed: 0, strikes: 0, phase: 'lobby' };
+let shownAward = null;
+let awardTimer = null;
 
 // ---------- Sonidos (WebAudio, sin archivos) ----------
 let audioCtx = null;
@@ -127,7 +129,7 @@ function render(s) {
   // Sonidos según cambios de estado
   if (s.answers) {
     const nowRevealed = s.answers.filter(a => a.revealed).length;
-    if (nowRevealed > prev.revealed && (s.phase === 'round' || s.phase === 'steal')) ding();
+    if (nowRevealed > prev.revealed && s.phase !== 'lobby' && s.phase !== 'final') ding();
     prev.revealed = nowRevealed;
   } else {
     prev.revealed = 0;
@@ -143,7 +145,15 @@ function render(s) {
   el.game.classList.toggle('hidden', s.phase !== 'round' && s.phase !== 'steal' && s.phase !== 'roundEnd');
   el.final.classList.toggle('hidden', s.phase !== 'final');
   el.scorebar.classList.toggle('hidden', s.phase === 'lobby');
-  el.awardOverlay.classList.toggle('hidden', s.phase !== 'roundEnd' || !s.lastAward);
+  // El aviso de premio se muestra unos segundos y luego deja ver el tablero
+  // para poder seguir revelando las respuestas que faltan
+  const awardKey = s.phase === 'roundEnd' && s.lastAward ? `${s.questionText}|${s.lastAward.team}|${s.lastAward.points}` : null;
+  if (awardKey !== shownAward) {
+    shownAward = awardKey;
+    clearTimeout(awardTimer);
+    el.awardOverlay.classList.toggle('hidden', !awardKey);
+    if (awardKey) awardTimer = setTimeout(() => el.awardOverlay.classList.add('hidden'), 4000);
+  }
 
   // Lobby
   if (s.phase === 'lobby') {
